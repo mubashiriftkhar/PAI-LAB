@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Spotify App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1db954, #191414);
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #191414;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #1db954;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #f7fafc;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        a {
+            color: #1db954;
+            text-decoration: none;
+        }
+
+        .logout-btn {
+            background: #e53e3e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ user.display_name }}!</h1>
+        <a href="/logout" class="logout-btn">Log Out</a>
+
+        <h2>Your Playlists</h2>
+        <ul>
+            {% for playlist in playlists.items %}
+                <li>{{ playlist.name }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Your Top Tracks</h2>
+        <ul>
+            {% for track in top_tracks.items %}
+                <li>{{ track.name }} by {{ track.artists[0].name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
